@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Deployment Portal POC</title>
+	<style>
+		html { overflow-y: scroll; font-family: "Helvetica Neue",Helvetica, Arial; font-size:13px; overflow-x: hidden; }
+			
+		body { margin:0; padding:0}
+
+		a { color: #337ab7; text-decoration:none; display:block; padding:2px 0px 5px }
+		a:hover { text-decoration:underline; }
+		h2 { color:black; padding:15px 0 15px 0px; margin:0; }
+		label { color:#7777a2; display: block; padding-bottom:3px; } 
+
+		.header {
+			background-color: #f8f8f8;
+			width:1419px;
+			height: 48px;
+			padding: 5px 5px 0;
+			margin:-10px -15px 20px;
+			font-size: 18px;
+			color:#777;
+			border:1px solid #e7e7e7;
+		}
+		.header img  {
+			float:left;
+			padding-right:20px;
+		}
+		.header p {
+			margin-top:13px;
+		}
+
+		.main {
+		clear:both;
+		position:relative;
+		padding: 10px 15px;
+		margin:0 auto;
+		width:1400px;
+			box-shadow: 0px 5px 8px #ddd;
+
+		}
+
+		.left_hodler { padding: 0; }
+		.right_hodler { position: absolute; left: 650px; top:75px; width:750px; }
+
+		#packageNames { 
+		padding: 10px;
+		width:600px;  
+		display:inline-block;
+		line-height:18px;
+		height:400px;
+		}
+
+		.checkbox_holder {
+		background-color: #fafafa;
+		padding: 10px;
+		width:743px;  
+		min-height:400px;
+		color: #777777;
+		}
+
+		.checkbox_holder a {
+		display:block;
+		float:left;
+		padding:15px;
+		background-color:##e7e7e7;
+		margin-right:8px;
+		text-decoration:none;
+		color:#337ab7;
+		border-top:1px solid #e7e7e7;
+		border-left:1px solid #e7e7e7;
+		border-right:1px solid #e7e7e7;
+		}
+
+		.checkbox_holder a:hover {
+		background-color:#337ab7;
+		color:white;
+		}
+		a.active {
+			background-color:white;
+		}
+		a.active:hover {
+			background-color:white;
+		color:#337ab7;
+		}
+
+		.tabs_holder {
+			width: 300px; position:absolute; top:28px; left:11px;
+		}
+
+
+		.displayEnvsDiv {
+		clear:both; float:left; width:720px; min-height:280px; padding:10px;
+		border:1px solid #e7e7e7 !important; background-color: white;
+		margin-top:44px;
+		}
+
+		#divEnvs1 {
+			display:none;
+		}
+
+		.inputFieldDivs {
+			float:left;
+		}
+		.inptCheckbox{
+			margin:6px 3px 3px 3px; 
+			float:left;
+		}
+		.checkbox_holder label {
+		float:left; margin:5px 12px 2px 0px;
+		}
+
+		#envs.option {	
+		padding: 2px 6px;
+		}
+
+		.btns_holder {
+		position:absolute; right:-10px; bottom:30px; width:500px;
+		}
+
+		#btnReset {
+			padding:12px 25px; color:#337ab7; text-decoration:none;
+			cursor:pointer; background-color:transparent; border:none; float:right; margin-right:15px;
+		}
+		#btnReset:hover { text-decoration:underline; }
+
+		#btnGenerate, #btnSignoff {
+		display:block;
+		padding:12px 25px; 
+			color: #337ab7;
+			cursor:pointer;
+			border:1px solid #e0e0e0;
+			background-color:#fdfdfd; float:right; margin-right:15px;
+		}
+		#btnGenerate:hover, #btnSignoff:hover {
+		background-color: #eeeeee }
+
+
+		.output, .log { 
+		padding: 10px 15px 45px 10px;
+		background-color: #fafafa;
+		min-height:780px;
+		min-width:1120px;
+		}
+		.log {
+		min-height:80px !important;
+		background-color:#fafafa;  
+			color:#green;
+			font-family:Courier;
+			border:1px solid #e7e7e7;
+		}
+
+		.output p { 
+		margin:0 0 2px;
+		}
+		#packageNames, .output, .checkbox_holder {
+			border:1px solid #e7e7e7 !important;
+			}
+		#footer {    
+			color:white;
+			padding:20px 0; 
+			margin: 40px 0 0;
+			border-top:1px solid white;
+			box-shadow: 0px 5px 8px #ddd;
+			text-align: center;
+			background-color:#ccc
+		}
+		#footer a {
+			color:white;
+			padding:4px 10px 6px;
+		}
+		#footer a:hover {
+			text-decoration: none;
+			color:greenyellow;
+		}
+	</style>
+</head>
+<body>
+
+
+	<div class="main">	
+		<div class="header">
+			<img src="logoigt.jpg" alt="IGT Logo" class="img">                
+			<p class="navbar-brand">Deployment Portal POC beta</a>
+		</div>	
+
+		<!-- LEFT HOLDER -->
+		<div class="left_hodler">
+			<label for="packageNames">1: Enter Package Names:</label>
+			<textarea name="packageNames" id="packageNames" spellcheck="false"></textarea><br><br>
+						
+			<label>Log:</label>
+			<div class="log">        
+				<div id="logDiv">Deploy from /wworks/rgsmvn/deployer/releases/WEB/bel_gsdev01/current/web/unfiltered/ to /wworks/rgs/apache/bel_gsdev01: [�[32mSUCCESS�[0m]</div>		
+			</div>
+			<br/><br/>
+
+			<label>Generated output:</label>
+			<div class="output">
+				<a id="displayTag" target="_blank"></a>
+				<div id="displayDiv"></div>		
+			</div>
+			<br/><br/>
+		</div>
+
+		<!-- RIGHT HOLDER -->
+		<div class="right_hodler">
+
+        	<label>2: Select Environment(s):</label>
+			<div class="checkbox_holder">
+
+				<div class="tabs_holder">
+					<a href="#" id="btnEnvs" class="active">Envs</a> <a href="#" id="btnDevEnvs">DevEnvs</a>
+				</div>
+
+				<form action="" name="envs">
+					<div class="displayEnvsDiv" id="divEnvs0">
+						<script src='envs0.js'></script>
+					</div>
+					<div class="displayEnvsDiv" id="divEnvs1">
+						<script src='envs1.js'></script>
+					</div>
+				</form>		
+
+			</div>
+			<br>
+
+			<div class="btns_holder">
+				<button id="btnGenerate">Generate</button>
+				<button id="btnSignoff">Signoff Generate</button>
+				<button id="btnReset">Reset Selection</button>
+			</div>
+		</div>
+		
+	</div>
+		
+	<div id="footer">IGT Operations Serbia <script>document.write(new Date().getFullYear())</script> </div>
+	<script src="script.js"></script>
+	
+	
+	
+</body>
+</html>
